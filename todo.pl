@@ -38,7 +38,7 @@ sub parse_file
       $linenumber = $linenumber + 1;
       if ($_ =~ m/\/\/TODO:/)
       {
-         print "   On line " . $linenumber . " " . trim($_) . "\n";
+         print "   On line " . $linenumber . ", " . trim($_) . "\n";
          $foundtodo = true;
       }
    }
