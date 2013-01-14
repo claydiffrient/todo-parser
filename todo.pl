@@ -28,15 +28,25 @@ sub trim($)
 
 sub parse_file
 {
-   $file = $_[0];
+   my $linenumber = 1;
+   my $file = $_[0];
    open (FILE, $file);
+   print "In file " . $file . ": \n";
+   my $foundtodo = false;
    while (<FILE>)
    {
+      $linenumber = $linenumber + 1;
       if ($_ =~ m/\/\/TODO:/)
       {
-         print trim($_) . "\n";
+         print "   On line " . $linenumber . " " . trim($_) . "\n";
+         $foundtodo = true;
       }
    }
+# Commented out because it seems cluttered.
+#   if ($foundtodo == false)
+#   {
+#     print "   Nothing //TODO:\n";
+#  }
 }
 
 
